@@ -47,10 +47,16 @@ namespace LABA2
             drawing = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //LINE
         {   //Активирует форму для рисования при нажатии на нее(на кнопку)
             pictureBox1.Enabled = false;
             shapesList.Add(new Line());
+        }
+        
+        private void button2_Click(object sender, EventArgs e) //ELLIPSE
+        {
+            pictureBox1.Enabled = false;
+            shapesList.Add(new Ellipse());
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -64,6 +70,12 @@ namespace LABA2
                 drawer.DrawShape(i);
             }
             pictureBox1.Invalidate();
+        }
+
+        private void button3_Click(object sender, EventArgs e) //TRIANGLE
+        {
+            pictureBox1.Enabled = true;
+            shapesList.Add(new Triangle());
         }
     }
 }
