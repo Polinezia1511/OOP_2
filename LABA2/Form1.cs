@@ -74,8 +74,14 @@ namespace LABA2
 
         private void button3_Click(object sender, EventArgs e) //TRIANGLE
         {
-            pictureBox1.Enabled = true;
+            pictureBox1.Enabled = false;
             shapesList.Add(new Triangle());
+        }
+
+        private void button4_Click(object sender, EventArgs e) //TRAPEZIUM
+        {
+            pictureBox1.Enabled = false;
+            shapesList.Add(new Trapezium());
         }
     }
 }
