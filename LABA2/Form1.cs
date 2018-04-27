@@ -83,5 +83,11 @@ namespace LABA2
             pictureBox1.Enabled = false;
             shapesList.Add(new Trapezium());
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Enabled = false;
+            shapesList.Add(new Rectangle());
+        }
     }
 }
