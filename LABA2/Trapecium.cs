@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LABA2
-{
+{/*
     class Trapezium : Shape
     {
         public override void OnChanged()
@@ -16,8 +16,10 @@ namespace LABA2
             points[1] = new PointF(firstPoint.X + 20 + lastPoint.X, firstPoint.Y);
             points[2] = new PointF(lastPoint.X - 20 + firstPoint.X, lastPoint.Y);
             points[3] = lastPoint;
-            path.Reset();
-            path.AddPolygon(points);
+            //path.Reset();
+           // path.AddPolygon(points);
+            
         }
     }
+    */
 }

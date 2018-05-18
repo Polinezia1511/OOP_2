@@ -11,83 +11,105 @@ using System.Windows.Forms;
 namespace LABA2
 {
     public partial class Form1 : Form
-    {
+    { 
         bool drawing = false;
-        List<Shape> shapesList = new List<Shape>();
+        List<Fabric> fabricList = new List<Fabric>() {
+            new EllipseFabric(),
+            new LineFabric(),
+            new RectangleFabric(),
+            new SquareFabric(),
+            //new TriangleFabric()
+        };
 
+        public Bitmap bm;
+        public Bitmap bmTemp;
         public Form1()
         {
             InitializeComponent();
+            bm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            bmTemp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private Shape shape = null;
+
+        private Point start;
+        private Image orig; 
+         
+        private Fabric fabric = null;
+        Pen pen = null;
+
+        public List<Fabric> FabricList { get => FabricList1; set => FabricList1 = value; }
+        public List<Fabric> FabricList1 { get => fabricList; set => fabricList = value; }
+        public List<Fabric> FabricList2 { get => fabricList; set => fabricList = value; }
+
+        private void cmb_choise_SelectionChangeCommitted(object sender, EventArgs e)
+        { 
+            fabric = FabricList[cmb_choise.SelectedIndex];
+            switch (cmb_choise.SelectedIndex)
+            {
+                case 0:
+                    {
+                        pen = new Pen(Color.LightPink, 4);
+                        break;
+                    }
+                case 1:
+                    {
+                        pen = new Pen(Color.Olive, 3);
+                        break;
+                    }
+                case 2:
+                    {
+                        pen = new Pen(Color.DarkRed, 2);
+                        break;
+                    }
+                case 3:
+                    {
+                        pen = new Pen(Color.PeachPuff, 2);
+                        break;
+                    }
+            }
+        }
+
+        private void pictureBox1_MouseDown_1(object sender, MouseEventArgs e)
         {
+            if (fabric != null)
+            {
+                start = new Point(e.X, e.Y);
+                drawing = true;
+                shape = fabric.FactoryMethod(pen);
+                orig = bm;
+            }
 
         }
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {    //Передаются аргументы(е) для нажатия на кнопку мыши и передачи координат, создается точка для нового объекта
-            drawing = true;
-            shapesList.Last().setFirstPoint(new PointF(e.X, e.Y));
-        }
-
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        { //Когда двигается мышка, за ней остается след из фигуры. При каждом движении е обновляется, устанавливается новая точка.
+        private void pictureBox1_MouseUp_1(object sender, MouseEventArgs e)
+        {
             if (drawing)
             {
-                shapesList.Last().setLastPoint(new PointF(e.X, e.Y));
+                var finish = new Point(e.X, e.Y);
+                var g = Graphics.FromImage(bm); 
+                shape.Draw(g, start, finish); ;
+                g.Save(); 
+                g.Dispose();
+                pictureBox1.Invalidate();
+                drawing = false;
             }
-
-            pictureBox1.Invalidate();
-
         }
 
-        private void Form1_MouseUp(object sender, MouseEventArgs e)
-        { // Запрещаем дальнейшее рисование фигуры, когда отпускается кнопка мыши
-            drawing = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e) //LINE
-        {   //Активирует форму для рисования при нажатии на нее(на кнопку)
-            pictureBox1.Enabled = false;
-            shapesList.Add(new Line());
-        }
-        
-        private void button2_Click(object sender, EventArgs e) //ELLIPSE
+        private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
         {
-            pictureBox1.Enabled = false;
-            shapesList.Add(new Ellipse());
-        }
-
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-            Drawer drawer = new Drawer();
-            Graphics gr1 = e.Graphics;
-            drawer.SetGraphics(gr1);
-            foreach (var i in shapesList)
+            if (drawing)
             {
-                i.OnChanged();
-                drawer.DrawShape(i);
+                var finish = new Point(e.X, e.Y);
+                bmTemp = new Bitmap(bm); ///то, на чем мы сейчас рисуем
+                pictureBox1.Image = bmTemp; 
+                var g = Graphics.FromImage(bmTemp);
+                shape.Draw(g, start, finish);
+                g.Dispose();
+                pictureBox1.Invalidate();
             }
-            pictureBox1.Invalidate();
         }
 
-        private void button3_Click(object sender, EventArgs e) //TRIANGLE
-        {
-            pictureBox1.Enabled = false;
-            shapesList.Add(new Triangle());
-        }
-
-        private void button4_Click(object sender, EventArgs e) //TRAPEZIUM
-        {
-            pictureBox1.Enabled = false;
-            shapesList.Add(new Trapezium());
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Enabled = false;
-            shapesList.Add(new Rectangle());
-        }
+       
     }
 }
