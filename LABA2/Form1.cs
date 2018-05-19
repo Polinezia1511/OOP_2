@@ -107,6 +107,7 @@ namespace LABA2
                 shape.Draw(g, start, finish);
                 g.Dispose();
                 pictureBox1.Invalidate();
+                GC.Collect();//Garbich
             }
         }
 
