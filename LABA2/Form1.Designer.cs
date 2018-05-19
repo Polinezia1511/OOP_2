@@ -32,6 +32,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmb_choise = new System.Windows.Forms.ComboBox();
             this.btn_draw = new System.Windows.Forms.Button();
+            this.open_btn = new System.Windows.Forms.Button();
+            this.save_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,12 +76,34 @@
             this.btn_draw.Text = "Нарисовать";
             this.btn_draw.UseVisualStyleBackColor = true;
             // 
+            // open_btn
+            // 
+            this.open_btn.Location = new System.Drawing.Point(443, 492);
+            this.open_btn.Name = "open_btn";
+            this.open_btn.Size = new System.Drawing.Size(89, 37);
+            this.open_btn.TabIndex = 3;
+            this.open_btn.Text = "Open";
+            this.open_btn.UseVisualStyleBackColor = true;
+            this.open_btn.Click += new System.EventHandler(this.open_btn_Click);
+            // 
+            // save_btn
+            // 
+            this.save_btn.Location = new System.Drawing.Point(611, 491);
+            this.save_btn.Name = "save_btn";
+            this.save_btn.Size = new System.Drawing.Size(82, 38);
+            this.save_btn.TabIndex = 4;
+            this.save_btn.Text = "Save";
+            this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(771, 541);
+            this.Controls.Add(this.save_btn);
+            this.Controls.Add(this.open_btn);
             this.Controls.Add(this.btn_draw);
             this.Controls.Add(this.cmb_choise);
             this.Controls.Add(this.pictureBox1);
@@ -95,6 +119,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cmb_choise;
         private System.Windows.Forms.Button btn_draw;
+        private System.Windows.Forms.Button open_btn;
+        private System.Windows.Forms.Button save_btn;
     }
 }
 
