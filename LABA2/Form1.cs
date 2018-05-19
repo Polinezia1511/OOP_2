@@ -185,5 +185,13 @@ namespace LABA2
                 }
             }
         }
+
+        private void clear_btn_Click(object sender, EventArgs e)
+        {
+            var g = Graphics.FromImage(bm);
+            g.Clear(Color.White);
+            JsonInfoList.Clear();
+            pictureBox1.Image = bm;
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.btn_draw = new System.Windows.Forms.Button();
             this.open_btn = new System.Windows.Forms.Button();
             this.save_btn = new System.Windows.Forms.Button();
+            this.clear_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +79,7 @@
             // 
             // open_btn
             // 
-            this.open_btn.Location = new System.Drawing.Point(443, 492);
+            this.open_btn.Location = new System.Drawing.Point(655, 455);
             this.open_btn.Name = "open_btn";
             this.open_btn.Size = new System.Drawing.Size(89, 37);
             this.open_btn.TabIndex = 3;
@@ -88,13 +89,23 @@
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(611, 491);
+            this.save_btn.Location = new System.Drawing.Point(655, 502);
             this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(82, 38);
+            this.save_btn.Size = new System.Drawing.Size(89, 38);
             this.save_btn.TabIndex = 4;
             this.save_btn.Text = "Save";
             this.save_btn.UseVisualStyleBackColor = true;
             this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
+            // 
+            // clear_btn
+            // 
+            this.clear_btn.Location = new System.Drawing.Point(501, 475);
+            this.clear_btn.Name = "clear_btn";
+            this.clear_btn.Size = new System.Drawing.Size(97, 39);
+            this.clear_btn.TabIndex = 5;
+            this.clear_btn.Text = "Clear";
+            this.clear_btn.UseVisualStyleBackColor = true;
+            this.clear_btn.Click += new System.EventHandler(this.clear_btn_Click);
             // 
             // Form1
             // 
@@ -102,6 +113,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(771, 541);
+            this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.open_btn);
             this.Controls.Add(this.btn_draw);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Button btn_draw;
         private System.Windows.Forms.Button open_btn;
         private System.Windows.Forms.Button save_btn;
+        private System.Windows.Forms.Button clear_btn;
     }
 }
 
