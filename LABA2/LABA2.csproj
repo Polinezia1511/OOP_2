@@ -69,7 +69,6 @@
     <Compile Include="shapes\Square.cs" />
     <Compile Include="SquareFabric.cs" />
     <Compile Include="Trapecium.cs" />
-    <Compile Include="shapes\Triangle.cs" />
     <Compile Include="TriangleFabric.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -100,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\36.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfases\Interfases.csproj">
+      <Project>{3391a64e-8aac-49c5-ab78-0384da8eb675}</Project>
+      <Name>Interfases</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

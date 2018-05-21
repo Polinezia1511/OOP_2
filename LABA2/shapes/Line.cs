@@ -9,7 +9,11 @@ namespace LABA2
 {
     class Line : Shape
     {
-        public Line(Pen pen) : base(pen) { }
+        public Line(Pen pen) : base(pen)
+        {
+            pen.Color = Color.Olive;
+            pen.Width = 3;
+        }
 
         public override void Draw(Graphics g, Point start, Point finish)
         {

@@ -4,7 +4,7 @@ namespace LABA2
 {
     class Ellipse : Shape
     {
-        public Ellipse(Pen pen) : base(pen) { }
+        public Ellipse(Pen pen) : base(pen) {}
 
         public override void Draw(Graphics g, Point start, Point finish)
         {

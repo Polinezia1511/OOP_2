@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LABA2", "LABA2\LABA2.csproj", "{1226CD1C-7A58-4D98-AC25-7093361C9571}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfases", "Interfases\Interfases.csproj", "{3391A64E-8AAC-49C5-AB78-0384DA8EB675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginTriangle", "PluginTriangle\PluginTriangle.csproj", "{7A81AFE2-EA1F-459D-B0CE-6C58C8AB9ADC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1226CD1C-7A58-4D98-AC25-7093361C9571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1226CD1C-7A58-4D98-AC25-7093361C9571}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1226CD1C-7A58-4D98-AC25-7093361C9571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3391A64E-8AAC-49C5-AB78-0384DA8EB675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3391A64E-8AAC-49C5-AB78-0384DA8EB675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3391A64E-8AAC-49C5-AB78-0384DA8EB675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3391A64E-8AAC-49C5-AB78-0384DA8EB675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A81AFE2-EA1F-459D-B0CE-6C58C8AB9ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A81AFE2-EA1F-459D-B0CE-6C58C8AB9ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A81AFE2-EA1F-459D-B0CE-6C58C8AB9ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A81AFE2-EA1F-459D-B0CE-6C58C8AB9ADC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
