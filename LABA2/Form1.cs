@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using Interfases;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace LABA2
 {
@@ -33,6 +34,23 @@ namespace LABA2
 
             UpdatePlugins();
             UpdateFabric();
+
+            try
+            {
+                XDocument xdoc = XDocument.Load("saveConfig.xml");
+                string theme = "-1";
+
+                foreach (XElement element in xdoc.Element("configurations").Elements("config"))
+                {
+                    theme = element.Element("theme").Value;
+                }
+                cmb_themes.SelectedIndex = currentTheme = Convert.ToInt32(theme, 10);
+                configIsChange = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Somethings wrong...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private string pluginPath = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
@@ -269,6 +287,136 @@ namespace LABA2
             g.Clear(Color.White);
             JsonInfoList.Clear();
             pictureBox1.Image = bm;
+        }
+
+        private void ChangeTheme(string config)
+        {
+            /*XDocument xdoc = new XDocument();
+            XElement configurations = new XElement("configurations");
+
+            //cmb_choise
+            XElement choise = new XElement("element");
+            XAttribute choiseAttr = new XAttribute("name", "cmb_choise");
+            XElement colorChoise = new XElement("color", cmb_choise.BackColor.ToArgb());
+            choise.Add(choiseAttr);
+            choise.Add(colorChoise);
+            configurations.Add(choise);
+
+            //cmb_themes
+            XElement themes = new XElement("element");
+            XAttribute themesAttr = new XAttribute("name", "cmb_themes");
+            XElement themesChoise = new XElement("color", cmb_themes.BackColor.ToArgb());
+            themes.Add(themesAttr);
+            themes.Add(themesChoise);
+            configurations.Add(themes);
+
+            //btn_clear
+            XElement clear = new XElement("element");
+            XAttribute clearAttr = new XAttribute("name", "clear_btn");
+            XElement clearChoise = new XElement("color", clear_btn.BackColor.ToArgb());
+            clear.Add(clearAttr);
+            clear.Add(clearChoise);
+            configurations.Add(clear);
+
+            //open_btn
+            XElement open = new XElement("element");
+            XAttribute openAttr = new XAttribute("name", "open_btn");
+            XElement openChoise = new XElement("color", open_btn.BackColor.ToArgb());
+            open.Add(openAttr);
+            open.Add(openChoise);
+            configurations.Add(open);
+
+            //save_btn
+            XElement save = new XElement("element");
+            XAttribute saveAttr = new XAttribute("name", "save_btn");
+            XElement saveChoise = new XElement("color", save_btn.BackColor.ToArgb());
+            save.Add(saveAttr);
+            save.Add(saveChoise);
+            configurations.Add(save);
+
+            //form_background
+            XElement form = new XElement("element");
+            XAttribute formAttr = new XAttribute("name", "this");
+            XElement formChoise = new XElement("color", this.BackColor.ToArgb());
+            form.Add(formAttr);
+            form.Add(formChoise);
+            configurations.Add(form);
+
+            xdoc.Add(configurations);
+
+
+            xdoc.Save(config);*/
+
+            try
+            {
+                Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
+
+                XDocument xdoc = XDocument.Load(config);
+                foreach (XElement element in xdoc.Element("configurations").Elements("element"))
+                {
+                    XAttribute nameAttribute = element.Attribute("name");
+                    XElement colorElement = element.Element("color");
+
+                    if (nameAttribute != null && colorElement != null && element != null)
+                    {
+                        keyValuePairs.Add(nameAttribute.Value, Convert.ToInt32(colorElement.Value, 10));
+                    }
+
+                }
+
+                foreach(Control c in this.Controls)
+                {
+                    if (keyValuePairs.ContainsKey(c.Name))
+                    {
+                        c.BackColor = Color.FromArgb(keyValuePairs[c.Name]);
+                    }
+                }
+
+                if (keyValuePairs.ContainsKey("this"))
+                {
+                    this.BackColor = Color.FromArgb(keyValuePairs["this"]);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void cmb_themes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            configIsChange = true;
+            if(cmb_themes.SelectedIndex == 0)
+            {
+                ChangeTheme("DarkConfig.xml");
+            }
+            else
+            {
+                ChangeTheme("LightConfig.xml");
+            }
+
+            currentTheme = cmb_themes.SelectedIndex;
+        }
+
+        private bool configIsChange = false;
+        private int currentTheme = 0;
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (configIsChange)
+            {
+                DialogResult result = MessageBox.Show("Do you want to save theme?", "Save", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if(result == DialogResult.Yes)
+                {
+                    XDocument xdoc = new XDocument(new XElement("configurations",
+                        new XElement("config",
+                            new XAttribute("name", "userConfig"),
+                            new XElement("theme", currentTheme)))
+                        );
+                    xdoc.Save("saveConfig.xml");
+                }
+            }
         }
     }
 }

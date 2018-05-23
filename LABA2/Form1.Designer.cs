@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmb_choise = new System.Windows.Forms.ComboBox();
-            this.btn_draw = new System.Windows.Forms.Button();
             this.open_btn = new System.Windows.Forms.Button();
             this.save_btn = new System.Windows.Forms.Button();
             this.clear_btn = new System.Windows.Forms.Button();
+            this.cmb_themes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             // cmb_choise
             // 
-            this.cmb_choise.BackColor = System.Drawing.SystemColors.Info;
+            this.cmb_choise.BackColor = System.Drawing.Color.LightBlue;
             this.cmb_choise.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.cmb_choise.FormattingEnabled = true;
             this.cmb_choise.Items.AddRange(new object[] {
@@ -60,69 +61,99 @@
             "Линия",
             "Прямоугольник",
             "Квадрат"});
-            this.cmb_choise.Location = new System.Drawing.Point(12, 475);
+            this.cmb_choise.Location = new System.Drawing.Point(23, 484);
             this.cmb_choise.Name = "cmb_choise";
             this.cmb_choise.Size = new System.Drawing.Size(147, 24);
             this.cmb_choise.TabIndex = 1;
             this.cmb_choise.SelectionChangeCommitted += new System.EventHandler(this.cmb_choise_SelectionChangeCommitted);
             // 
-            // btn_draw
-            // 
-            this.btn_draw.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_draw.Image = global::LABA2.Properties.Resources._36;
-            this.btn_draw.Location = new System.Drawing.Point(165, 471);
-            this.btn_draw.Name = "btn_draw";
-            this.btn_draw.Size = new System.Drawing.Size(153, 28);
-            this.btn_draw.TabIndex = 2;
-            this.btn_draw.Text = "Нарисовать";
-            this.btn_draw.UseVisualStyleBackColor = true;
-            // 
             // open_btn
             // 
-            this.open_btn.Location = new System.Drawing.Point(655, 455);
+            this.open_btn.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.open_btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.open_btn.Location = new System.Drawing.Point(547, 477);
             this.open_btn.Name = "open_btn";
             this.open_btn.Size = new System.Drawing.Size(89, 37);
             this.open_btn.TabIndex = 3;
             this.open_btn.Text = "Open";
-            this.open_btn.UseVisualStyleBackColor = true;
+            this.open_btn.UseVisualStyleBackColor = false;
             this.open_btn.Click += new System.EventHandler(this.open_btn_Click);
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(655, 502);
+            this.save_btn.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.save_btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.save_btn.Location = new System.Drawing.Point(659, 476);
             this.save_btn.Name = "save_btn";
             this.save_btn.Size = new System.Drawing.Size(89, 38);
             this.save_btn.TabIndex = 4;
             this.save_btn.Text = "Save";
-            this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.UseVisualStyleBackColor = false;
             this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
             // clear_btn
             // 
-            this.clear_btn.Location = new System.Drawing.Point(501, 475);
+            this.clear_btn.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.clear_btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.clear_btn.Location = new System.Drawing.Point(420, 476);
             this.clear_btn.Name = "clear_btn";
             this.clear_btn.Size = new System.Drawing.Size(97, 39);
             this.clear_btn.TabIndex = 5;
             this.clear_btn.Text = "Clear";
-            this.clear_btn.UseVisualStyleBackColor = true;
+            this.clear_btn.UseVisualStyleBackColor = false;
             this.clear_btn.Click += new System.EventHandler(this.clear_btn_Click);
+            // 
+            // cmb_themes
+            // 
+            this.cmb_themes.BackColor = System.Drawing.Color.LightBlue;
+            this.cmb_themes.FormattingEnabled = true;
+            this.cmb_themes.Items.AddRange(new object[] {
+            "Dark",
+            "Light"});
+            this.cmb_themes.Location = new System.Drawing.Point(207, 484);
+            this.cmb_themes.Name = "cmb_themes";
+            this.cmb_themes.Size = new System.Drawing.Size(147, 24);
+            this.cmb_themes.TabIndex = 6;
+            this.cmb_themes.SelectedIndexChanged += new System.EventHandler(this.cmb_themes_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(204, 464);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Themes";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 464);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 17);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Figures";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(771, 541);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmb_themes);
             this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.open_btn);
-            this.Controls.Add(this.btn_draw);
             this.Controls.Add(this.cmb_choise);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -130,10 +161,12 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cmb_choise;
-        private System.Windows.Forms.Button btn_draw;
         private System.Windows.Forms.Button open_btn;
         private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.Button clear_btn;
+        private System.Windows.Forms.ComboBox cmb_themes;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
