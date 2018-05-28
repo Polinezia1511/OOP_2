@@ -4,7 +4,10 @@ namespace LABA2.shapes
 {
     class Square : Shape
     { 
-        public Square(Pen pen) : base(pen) { }
+        public Square(Pen pen) : base(pen) {
+            pen.Color = Color.LightSalmon;
+            pen.Width = 4;
+        }
         public override void Draw(Graphics g, Point start, Point finish)
         {
             if (finish.X < start.X || finish.Y < start.Y)

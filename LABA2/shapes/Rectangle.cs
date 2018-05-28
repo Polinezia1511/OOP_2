@@ -10,7 +10,10 @@ namespace LABA2
     class Rectangle : Shape
     {
 
-        public Rectangle(Pen pen) : base(pen) { }
+        public Rectangle(Pen pen) : base(pen) {
+            pen.Color = Color.DarkRed;
+            pen.Width = 2;
+        }
 
         public override void Draw(Graphics g, Point start, Point finish)
         {
